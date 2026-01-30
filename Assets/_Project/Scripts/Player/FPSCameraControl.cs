@@ -4,7 +4,6 @@ public class FPSCameraControl : MonoBehaviour
 {
 
     [SerializeField] private Transform _target;
-    [SerializeField] private float _cameraSensibility;
     [SerializeField] private float _topClamp = 90f;
     [SerializeField] private float _bottomClamp = -90f;
 
@@ -22,8 +21,8 @@ public class FPSCameraControl : MonoBehaviour
 
     private void LateUpdate()
     {
-        yaw += Input.GetAxis("Mouse X") * _cameraSensibility;
-        pitch -= Input.GetAxis("Mouse Y") * _cameraSensibility;
+        yaw += Input.GetAxis("Mouse X") * MouseSensitivityController.MouseSensitivity;
+        pitch -= Input.GetAxis("Mouse Y") * MouseSensitivityController.MouseSensitivity;
         pitch = Mathf.Clamp(pitch, _bottomClamp, _topClamp);
 
         Quaternion rotation = Quaternion.Euler(pitch, yaw, 0);
