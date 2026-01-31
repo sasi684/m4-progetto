@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour
 
         if (CanGainStamina())
             _staminaController.GainStamina(25f * Time.deltaTime);
-        Debug.Log(_isSprinting);
     }
 
     private void FixedUpdate()

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class LifeController : MonoBehaviour
 {
@@ -20,8 +21,10 @@ public class LifeController : MonoBehaviour
 
         if (_currentHP <= 0)
         {
-            Debug.Log($"{gameObject.name} non ha piu' HP");
-            Destroy(gameObject);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            SceneManager.LoadScene("Defeat Scene");
         }
 
         _onHealthchanged.Invoke(_currentHP, _maxHP);
