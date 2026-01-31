@@ -20,4 +20,9 @@ public class Timer : MonoBehaviour
         _onTimeChanged.Invoke(_currentTimeLeft);
     }
 
+    public void AddTime(float time)
+    {
+        _currentTimeLeft += time;
+    }
+
 }
