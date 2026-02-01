@@ -5,11 +5,9 @@ public class CoinAnimation : MonoBehaviour
 
     [SerializeField] private float _rotationSpeed;
 
-    private CoinManager _coinManager;
-
     private void Awake()
     {
-        _coinManager = FindAnyObjectByType<CoinManager>();
+        CoinManager.TotalCoins++;
     }
 
     private void Update()

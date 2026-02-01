@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        _direction = _camera.transform.forward * vertical + _camera.transform.right * horizontal;
+        _direction = transform.forward * vertical + transform.right * horizontal;
         _direction = _direction.normalized;
 
         if (CanConsumeStamina())

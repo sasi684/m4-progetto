@@ -7,6 +7,6 @@ public class GroundCheck : MonoBehaviour
 
     private void Update()
     {
-        IsGrounded = Physics.CheckSphere(transform.position, 0.02f, _groundLayer);
+        IsGrounded = Physics.CheckSphere(transform.position, 0.2f, _groundLayer);
     }
 }

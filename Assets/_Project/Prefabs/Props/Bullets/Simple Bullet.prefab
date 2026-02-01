@@ -119,5 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 20
-  _bulletDuration: 5
-  _bulletSpeed: 8
+  _bulletDuration: 2
+  _bulletSpeed: 20

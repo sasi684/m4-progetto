@@ -21,9 +21,6 @@ public class LifeController : MonoBehaviour
 
         if (_currentHP <= 0)
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-
             SceneManager.LoadScene("Defeat Scene");
         }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -16,8 +17,13 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        _currentTimeLeft -= Time.deltaTime;
-        _onTimeChanged.Invoke(_currentTimeLeft);
+        if (_currentTimeLeft > 0)
+        {
+            _currentTimeLeft -= Time.deltaTime;
+            _onTimeChanged.Invoke(_currentTimeLeft);
+        }
+        else
+            SceneManager.LoadScene("Defeat Scene");
     }
 
     public void AddTime(float time)

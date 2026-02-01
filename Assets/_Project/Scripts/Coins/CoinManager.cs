@@ -8,6 +8,8 @@ public class CoinManager : MonoBehaviour
     [SerializeField] private int _coinsCounter;
     [SerializeField] private UnityEvent<int> _onCoinsCounterChanged;
 
+    public static int TotalCoins = 0;
+
     private void Start()
     {
         _coinsCounter = 0;
