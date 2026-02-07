@@ -9,10 +9,10 @@ public class UnlockDoor : MonoBehaviour
 
     private void Awake()
     {
-        _meshes = GetComponentsInParent<MeshRenderer>();
+        _meshes = GetComponentsInParent<MeshRenderer>(); // Get all the meshes in the game object to update their materials later
     }
 
-    public void OpenFinalDoor(int coins, int totalCoins)
+    public void OpenFinalDoor(int coins, int totalCoins) // Checks if you got all the coins in the level and eventually unlocks the door, plays a hooray sound and makes it green
     {
         if(coins >= totalCoins)
         {
@@ -24,7 +24,7 @@ public class UnlockDoor : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) // If the door is open, loads the next scene in index order (new level or victory scene)
     {
         if (_isOpen && collision.collider.TryGetComponent<PlayerController>(out var player))
         {

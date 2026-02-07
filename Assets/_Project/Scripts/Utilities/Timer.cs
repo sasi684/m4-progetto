@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
 
-    [SerializeField] private int _totalLevelTime;
-    [SerializeField] private UnityEvent<float> _onTimeChanged;
+    [SerializeField] private int _totalLevelTime; // Time until defeat different for each level
+    [SerializeField] private UnityEvent<float> _onTimeChanged;  // Event used to update the UI
 
-    private float _currentTimeLeft;
+    private float _currentTimeLeft; // To keep track of the time left and display it in the UI
 
     private void Start()
     {
@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        if (_currentTimeLeft > 0)
+        if (_currentTimeLeft > 0) // Keep updating the UI and the timer each frame and load the defeat scene if it goes to zero
         {
             _currentTimeLeft -= Time.deltaTime;
             _onTimeChanged.Invoke(_currentTimeLeft);
@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
             SceneManager.LoadScene("Defeat Scene");
     }
 
-    public void AddTime(float time)
+    public void AddTime(float time) // Used from coins to add extra time left
     {
         _currentTimeLeft += time;
     }

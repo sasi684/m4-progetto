@@ -12,15 +12,15 @@ public class SimpleBullet : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, _bulletDuration);
+        Destroy(gameObject, _bulletDuration); // Destroy the bullet after x seconds it spawned
     }
 
-    private void Update()
+    private void Update() // Update its position to each frame using a given direction
     {
         transform.position = transform.position + _direction * (_bulletSpeed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) // Deal damage, play the hurt sound and destroy the bullet when the player collides with it
     {
         if(collision.collider.TryGetComponent<LifeController>(out var life))
         {
@@ -33,6 +33,6 @@ public class SimpleBullet : MonoBehaviour
         }
     }
 
-    public void SetupBullet(Vector3 direction) => _direction = direction;
+    public void SetupBullet(Vector3 direction) => _direction = direction; // Setup the bullet with a direction
 
 }

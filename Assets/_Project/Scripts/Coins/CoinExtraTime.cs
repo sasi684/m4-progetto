@@ -12,12 +12,12 @@ public class CoinExtraTime : MonoBehaviour
     {
         _timer = FindAnyObjectByType<Timer>();
         _coinManager = FindAnyObjectByType<CoinManager>();
-        _coinManager.AddCoinToTotal();
+        _coinManager.AddCoinToTotal(); // Add the coin to the total coins in the level
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.TryGetComponent<PlayerController>(out var player))
+        if(collision.TryGetComponent<PlayerController>(out var player)) // If the player touches the coin, add a coin to the counter and add extra time to the timer
         {
             _timer.AddTime(_extraTime);
             _coinManager.AddCoinToCounter();

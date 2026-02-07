@@ -7,26 +7,25 @@ public class UI_Options : MonoBehaviour
 
     [SerializeField] private GameObject _optionsPanel;
     [SerializeField] private AudioMixer _audioMixer;
-    [SerializeField] private UnityEvent<float> _onSensitivityChange;
+    [SerializeField] private UnityEvent<float> _onSensitivityChange; // Event used to update the sensitivity in the PlayerPrefs class
 
-    public void OnClickSaveOptions()
+    public void OnClickSaveOptions() // Save all changes made in the options menu (fake)
     {
-        PlayerPrefs.Save();
         Debug.Log("Le opzioni sono state salvate!");
     }
 
-    public void OnClickReturn()
+    public void OnClickReturn() // Close the options panel
     {
-        _optionsPanel.SetActive(!_optionsPanel.activeSelf);
+        _optionsPanel.SetActive(false);
     }
 
-    public void OnSlideMouseSensitivity(float sensitivity)
+    public void OnSlideMouseSensitivity(float sensitivity) // Change the sensitivity in the PlayerPrefs class
     {
         PlayerPrefs.SetFloat("MouseSensitivity", sensitivity);
         _onSensitivityChange.Invoke(sensitivity);
     }
 
-    public void OnSlideSFXVolume(float value)
+    public void OnSlideSFXVolume(float value) // Update the volume for SFX
     {
         if(value > 0.01f)
         {
@@ -39,7 +38,7 @@ public class UI_Options : MonoBehaviour
         }
     }
 
-    public void OnSlideMusicVolume(float value)
+    public void OnSlideMusicVolume(float value) // Update the volume for Music
     {
         if (value > 0.01f)
         {
@@ -52,7 +51,7 @@ public class UI_Options : MonoBehaviour
         }
     }
 
-    public void OnSlideMasterVolume(float value)
+    public void OnSlideMasterVolume(float value) // Update the volume for Master
     {
         if(value > 0.01f)
         {
