@@ -8,10 +8,6 @@ public class CoinSimple : MonoBehaviour
     private void Awake()
     {
         _coinManager = FindAnyObjectByType<CoinManager>();
-    }
-
-    private void Start()
-    {
         _coinManager.AddCoinToTotal();
     }
 

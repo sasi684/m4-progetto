@@ -18,6 +18,8 @@ public class UnlockDoor : MonoBehaviour
         {
             _isOpen = true;
 
+            GetComponent<AudioSource>().Play();
+
             foreach(var mesh in _meshes) mesh.material.color = Color.green;
         }
     }

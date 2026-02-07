@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SimpleBullet : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class SimpleBullet : MonoBehaviour
         if(collision.collider.TryGetComponent<LifeController>(out var life))
         {
             life.TakeDamage(_damage);
+
+            PlayerSFX sfx = collision.gameObject.GetComponent<PlayerSFX>();
+            sfx.PlayHurtSound();
+
             Destroy(gameObject);
         }
     }

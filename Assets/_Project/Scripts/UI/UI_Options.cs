@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 
 public class UI_Options : MonoBehaviour
 {
 
     [SerializeField] private GameObject _optionsPanel;
     [SerializeField] private AudioMixer _audioMixer;
+    [SerializeField] private UnityEvent<float> _onSensitivityChange;
 
     public void OnClickSaveOptions()
     {
+        PlayerPrefs.Save();
         Debug.Log("Le opzioni sono state salvate!");
     }
 
@@ -19,7 +22,8 @@ public class UI_Options : MonoBehaviour
 
     public void OnSlideMouseSensitivity(float sensitivity)
     {
-        MouseSensitivityController.MouseSensitivity = sensitivity;
+        PlayerPrefs.SetFloat("MouseSensitivity", sensitivity);
+        _onSensitivityChange.Invoke(sensitivity);
     }
 
     public void OnSlideSFXVolume(float value)

@@ -12,10 +12,6 @@ public class CoinExtraTime : MonoBehaviour
     {
         _timer = FindAnyObjectByType<Timer>();
         _coinManager = FindAnyObjectByType<CoinManager>();
-    }
-
-    private void Start()
-    {
         _coinManager.AddCoinToTotal();
     }
 

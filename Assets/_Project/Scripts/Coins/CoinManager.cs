@@ -9,11 +9,6 @@ public class CoinManager : MonoBehaviour
 
     private int _totalCoins;
 
-    private void Awake()
-    {
-        _totalCoins = 0;
-    }
-
     private void Start()
     {
         _coinsCounter = 0;
