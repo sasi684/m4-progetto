@@ -5,11 +5,6 @@ public class CoinAnimation : MonoBehaviour
 
     [SerializeField] private float _rotationSpeed;
 
-    private void Awake()
-    {
-        CoinManager.TotalCoins++;
-    }
-
     private void Update()
     {
         Quaternion deltaRotation = Quaternion.Euler(Vector3.up * _rotationSpeed * Time.deltaTime);

@@ -12,7 +12,7 @@ public class UI_DefeatScreen : MonoBehaviour
 
     public void OnClickPlayAgain()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene(PlayerPrefs.GetInt("PreviousScene"));
     }
 
     public void OnClickMainMenu()

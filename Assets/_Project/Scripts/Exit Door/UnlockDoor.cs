@@ -12,9 +12,9 @@ public class UnlockDoor : MonoBehaviour
         _meshes = GetComponentsInParent<MeshRenderer>();
     }
 
-    public void OpenFinalDoor(int coins)
+    public void OpenFinalDoor(int coins, int totalCoins)
     {
-        if(coins >= CoinManager.TotalCoins)
+        if(coins >= totalCoins)
         {
             _isOpen = true;
 

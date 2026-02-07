@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _staminaRegenDelay;
+    [SerializeField] private float _staminaRegenRate;
 
     private Camera _camera;
     private Rigidbody _rb;
@@ -26,6 +28,11 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _staminaController = GetComponent<StaminaController>();
         _groundCheck = GetComponentInChildren<GroundCheck>();
+    }
+
+    private void Start()
+    {
+        PlayerPrefs.SetInt("PreviousScene", SceneManager.GetActiveScene().buildIndex);
     }
 
     private void Update()
@@ -62,7 +69,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (CanGainStamina())
-            _staminaController.GainStamina(25f * Time.deltaTime);
+            _staminaController.GainStamina(_staminaRegenRate * Time.deltaTime);
     }
 
     private void FixedUpdate()

@@ -10,11 +10,16 @@ public class CoinSimple : MonoBehaviour
         _coinManager = FindAnyObjectByType<CoinManager>();
     }
 
+    private void Start()
+    {
+        _coinManager.AddCoinToTotal();
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         if(collision.TryGetComponent<PlayerController>(out var player))
         {
-            _coinManager.AddCoin();
+            _coinManager.AddCoinToCounter();
             Destroy(gameObject);
         }
     }

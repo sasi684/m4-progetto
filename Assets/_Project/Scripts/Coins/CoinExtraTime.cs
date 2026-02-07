@@ -14,12 +14,17 @@ public class CoinExtraTime : MonoBehaviour
         _coinManager = FindAnyObjectByType<CoinManager>();
     }
 
+    private void Start()
+    {
+        _coinManager.AddCoinToTotal();
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         if(collision.TryGetComponent<PlayerController>(out var player))
         {
             _timer.AddTime(_extraTime);
-            _coinManager.AddCoin();
+            _coinManager.AddCoinToCounter();
             Destroy(gameObject);
         }
     }
